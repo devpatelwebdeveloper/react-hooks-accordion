@@ -7,14 +7,8 @@
 
 /* Style the accordion section */
 .accordion__section {
-  /* height: max-content;
-  margin: auto; */
-  width: max-content;
-  padding: 20px 20px;
-  display: inline-flex;
-  flex-direction: column;
   height: max-content;
-  cursor: pointer;
+  margin: auto;
 }
 
 /* Style the buttons that are used to open and close the accordion panel */

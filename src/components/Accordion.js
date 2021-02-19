@@ -31,8 +31,12 @@ const Accordion = ({ title, image, internalContent, icon }) => {
   });
 
   return (
-    <div className="accordion__section" ref={sensitive}>
-      <div className={`accordion ${active}`} onClick={toggleAccordion}>
+    <>
+      <div
+        className={`accordion ${active}`}
+        onClick={toggleAccordion}
+        ref={sensitive}
+      >
         <img
           alt=""
           className="accordion_icon"
@@ -40,17 +44,16 @@ const Accordion = ({ title, image, internalContent, icon }) => {
           src={`https://quickbooks.intuit.com/oidam/intuit/sa/en_us/quickbooks/icons/${icon}.svg`}
         />
         <div className="accordion__title">{title}</div>
-        {/* <Chevron width={10} fill={"#777"} className={`${rotation}`} /> */}
       </div>
+
       <div
         ref={content}
         style={{ maxHeight: `${height}` }}
         className="accordion__content"
       >
         <FeatureGrid internalContent={internalContent} image={image} />
-        {/* <div className="accordion__text">{children}</div> */}
       </div>
-    </div>
+    </>
   );
 };
 
