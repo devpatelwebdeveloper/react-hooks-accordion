@@ -1,10 +1,12 @@
 import React, { useState, useRef } from "react";
 import Chevron from "./Chevron";
 
+import FeatureGrid from "./FeatureGrid";
+
 import "./Accordion.css";
 import useOnClickOutside from "../hooks/useOnClickOutside";
 
-const Accordion = ({ title, children }) => {
+const Accordion = ({ title, image, internalContent, icon }) => {
   const [active, setActive] = useState("");
   const [height, setHeight] = useState("0px");
   const [rotation, setRotation] = useState("accordion__icon");
@@ -30,16 +32,23 @@ const Accordion = ({ title, children }) => {
 
   return (
     <div className="accordion__section" ref={sensitive}>
-      <button className={`accordion ${active}`} onClick={toggleAccordion}>
-        <p className="accordion__title">{title}</p>
-        <Chevron width={10} fill={"#777"} className={`${rotation}`} />
-      </button>
+      <div className={`accordion ${active}`} onClick={toggleAccordion}>
+        <img
+          alt=""
+          className="accordion_icon"
+          data-src={`https://quickbooks.intuit.com/oidam/intuit/sa/en_us/quickbooks/icons/${icon}.svg`}
+          src={`https://quickbooks.intuit.com/oidam/intuit/sa/en_us/quickbooks/icons/${icon}.svg`}
+        />
+        <div className="accordion__title">{title}</div>
+        {/* <Chevron width={10} fill={"#777"} className={`${rotation}`} /> */}
+      </div>
       <div
         ref={content}
         style={{ maxHeight: `${height}` }}
         className="accordion__content"
       >
-        <div className="accordion__text">{children}</div>
+        <FeatureGrid internalContent={internalContent} image={image} />
+        {/* <div className="accordion__text">{children}</div> */}
       </div>
     </div>
   );

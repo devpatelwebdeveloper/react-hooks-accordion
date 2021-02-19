@@ -8,10 +8,21 @@ import "./styles.css";
 const App = () => {
   return (
     <div className="App">
-      <Accordion title="What is your return policy?">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </Accordion>
+      <Accordion
+        title="Bill management"
+        internalContent="<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.</p><br/><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.</p>"
+        image="https://via.placeholder.com/300"
+        icon="gift-icon-sbseg"
+      />
+      <Accordion
+        title="Bill management"
+        internalContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua."
+        image="https://via.placeholder.com/300"
+        icon="parking-icon-sbseg"
+      />
     </div>
   );
 };
