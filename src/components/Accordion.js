@@ -42,6 +42,7 @@ const Accordions = ({ accordionContents }) => {
                 length={accordionContents.length}
                 handleFeatureClick={() => handleFeatureClick(accordion, index)}
               />
+
               {(index % 4 === 3 || index === accordionContents.length - 1) &&
                 roundToX(index + 1, 4) / 4 === featureRow && (
                   <div
@@ -52,6 +53,7 @@ const Accordions = ({ accordionContents }) => {
                     <FeatureGrid
                       internalContent={activeFeature.internalContent}
                       image={activeFeature.image}
+                      dev={activeId + 1}
                     />
                   </div>
                 )}

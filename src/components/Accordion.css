@@ -14,12 +14,13 @@
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
   align-items: center;
-  width: max-content;
+  width: 25%;
   padding: 20px 20px;
   display: inline-flex;
   flex-direction: column;
   height: 95px;
   cursor: pointer;
+  border: 1px solid black;
   /* transition: background-color 0.6s ease; */
 }
 
@@ -80,4 +81,9 @@
   margin: auto;
   display: flex;
   margin-bottom: 10px;
+}
+
+.dev-accordion {
+  display: flex;
+  flex-direction: row;
 }
