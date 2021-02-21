@@ -53,7 +53,7 @@ const Accordions = ({ accordionContents }) => {
                     <FeatureGrid
                       internalContent={activeFeature.internalContent}
                       image={activeFeature.image}
-                      dev={activeId + 1}
+                      leftSide={activeId + 1}
                     />
                   </div>
                 )}
