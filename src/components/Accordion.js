@@ -1,60 +1,66 @@
-import React, { useState, useRef } from "react";
-import Chevron from "./Chevron";
-
+import React, { useState } from "react";
+import Accordion from "./AccordionItem";
 import FeatureGrid from "./FeatureGrid";
 
 import "./Accordion.css";
-import useOnClickOutside from "../hooks/useOnClickOutside";
 
-const Accordion = ({ title, image, internalContent, icon }) => {
-  const [active, setActive] = useState("");
-  const [height, setHeight] = useState("0px");
-  const [rotation, setRotation] = useState("accordion__icon");
+const Accordions = ({ accordionContents }) => {
+  const [activeFeature, setActiveFeature] = useState(null);
+  const [featureRow, setFeatureRow] = useState(null);
+  const [activeId, setActiveId] = useState(null);
 
-  const content = useRef();
-  const sensitive = useRef();
-
-  const toggleAccordion = () => {
-    setActive(active === "" ? "active" : "");
-    setHeight(
-      active === "active" ? "0px" : `${content.current.scrollHeight}px`
-    );
-    setRotation(
-      active === "active" ? "accordion__icon" : "accordion__icon rotate"
-    );
+  const roundToX = (num, x) => {
+    return Math.ceil(num / x) * x;
   };
 
-  useOnClickOutside(sensitive, () => {
-    setActive("");
-    setHeight("0px");
-    setRotation("accordion__icon");
-  });
+  const handleFeatureClick = (featureId, index) => {
+    const itemRow = roundToX(index + 1, 4) / 4;
+
+    if (featureId === activeFeature) {
+      setActiveFeature(null);
+      setFeatureRow(null);
+    } else {
+      setActiveFeature(featureId);
+      setFeatureRow(itemRow);
+      setActiveId(index);
+    }
+  };
 
   return (
     <>
-      <div
-        className={`accordion ${active}`}
-        onClick={toggleAccordion}
-        ref={sensitive}
-      >
-        <img
-          alt=""
-          className="accordion_icon"
-          data-src={`https://quickbooks.intuit.com/oidam/intuit/sa/en_us/quickbooks/icons/${icon}.svg`}
-          src={`https://quickbooks.intuit.com/oidam/intuit/sa/en_us/quickbooks/icons/${icon}.svg`}
-        />
-        <div className="accordion__title">{title}</div>
-      </div>
-
-      <div
-        ref={content}
-        style={{ maxHeight: `${height}` }}
-        className="accordion__content"
-      >
-        <FeatureGrid internalContent={internalContent} image={image} />
+      <div>
+        {accordionContents.map((accordion, index) => {
+          return (
+            <>
+              <Accordion
+                key={`feature-${index}`}
+                title={accordion.title}
+                internalContent={accordion.internalContent}
+                image={accordion.image}
+                icon={accordion.icon}
+                index={index}
+                length={accordionContents.length}
+                handleFeatureClick={() => handleFeatureClick(accordion, index)}
+              />
+              {(index % 4 === 3 || index === accordionContents.length - 1) &&
+                roundToX(index + 1, 4) / 4 === featureRow && (
+                  <div
+                    // ref={content}
+                    // style={{ maxHeight: `${height}` }}
+                    className="accordion__content"
+                  >
+                    <FeatureGrid
+                      internalContent={activeFeature.internalContent}
+                      image={activeFeature.image}
+                    />
+                  </div>
+                )}
+            </>
+          );
+        })}
       </div>
     </>
   );
 };
 
-export default Accordion;
+export default Accordions;

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import ReactDOM from "react-dom";
-import Accordions from "./components/tryAcc";
+import Accordions from "./components/Accordion";
 
 import "./styles.css";
 
