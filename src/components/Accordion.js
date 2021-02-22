@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Accordion from "./AccordionItem";
 import FeatureGrid from "./FeatureGrid";
+import useOnClickOutside from "../hooks/useOnClickOutside";
 
 import "./Accordion.css";
 
@@ -49,6 +50,8 @@ const Accordions = ({ accordionContents }) => {
     setFilteredFeature(temp);
   }, [filter]);
 
+  useOnClickOutside(sensitive, handleFeatureClick);
+
   return (
     <>
       <div className="portfolio__labels">
@@ -78,35 +81,37 @@ const Accordions = ({ accordionContents }) => {
         </a>
       </div>
 
-      {filteredFeature.map((accordion, index) => {
-        return (
-          <>
-            <Accordion
-              key={`feature-${index}`}
-              title={accordion.title}
-              internalContent={accordion.internalContent}
-              image={accordion.image}
-              icon={accordion.icon}
-              index={index}
-              length={filteredFeature.length}
-              handleFeatureClick={() => {
-                handleFeatureClick(accordion, index);
-              }}
-            />
+      <div ref={sensitive}>
+        {filteredFeature.map((accordion, index) => {
+          return (
+            <>
+              <Accordion
+                key={`feature-${index}`}
+                title={accordion.title}
+                internalContent={accordion.internalContent}
+                image={accordion.image}
+                icon={accordion.icon}
+                index={index}
+                length={filteredFeature.length}
+                handleFeatureClick={() => {
+                  handleFeatureClick(accordion, index);
+                }}
+              />
 
-            {(index % 4 === 3 || index === filteredFeature.length - 1) &&
-              roundToX(index + 1, 4) / 4 === featureRow && (
-                <div className="accordion__content">
-                  <FeatureGrid
-                    internalContent={activeFeature.internalContent}
-                    image={activeFeature.image}
-                    leftSide={activeId + 1}
-                  />
-                </div>
-              )}
-          </>
-        );
-      })}
+              {(index % 4 === 3 || index === filteredFeature.length - 1) &&
+                roundToX(index + 1, 4) / 4 === featureRow && (
+                  <div className="accordion__content">
+                    <FeatureGrid
+                      internalContent={activeFeature.internalContent}
+                      image={activeFeature.image}
+                      leftSide={activeId + 1}
+                    />
+                  </div>
+                )}
+            </>
+          );
+        })}
+      </div>
     </>
   );
 };
