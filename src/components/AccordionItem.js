@@ -18,7 +18,7 @@ const Accordion = (props) => {
 
   return (
     <>
-      <div className={`accordion`} onClick={handleClick} ref={sensitive}>
+      <button className={`accordion`} onClick={handleClick} ref={sensitive}>
         <img
           alt=""
           className={`accordion__icon ${activated && `highlighted`}`}
@@ -26,7 +26,7 @@ const Accordion = (props) => {
           src={`https://quickbooks.intuit.com/oidam/intuit/sa/en_us/quickbooks/icons/${props.icon}.svg`}
         />
         <div className="accordion__title">{props.title}</div>
-      </div>
+      </button>
     </>
   );
 };
