@@ -3,17 +3,8 @@ import React, { useState, useRef } from "react";
 import "./Accordion.css";
 import useOnClickOutside from "../hooks/useOnClickOutside";
 
-const Accordion = ({
-  title,
-  image,
-  internalContent,
-  icon,
-  handleFeatureClick,
-  actdev
-}) => {
+const Accordion = ({ title, icon, handleFeatureClick }) => {
   const [active, setActive] = useState(false);
-
-  const content = useRef();
   const sensitive = useRef();
 
   useOnClickOutside(sensitive, () => {
@@ -27,7 +18,11 @@ const Accordion = ({
 
   return (
     <>
-      <div className={`accordion `} onClick={handleClick} ref={sensitive}>
+      <div
+        className={`accordion feature-${title.replace(/\s/g, "")}`}
+        onClick={handleClick}
+        ref={sensitive}
+      >
         <img
           alt=""
           className={`accordion__icon ${active && `highlighted`}`}
