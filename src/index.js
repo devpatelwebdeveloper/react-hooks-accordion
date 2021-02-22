@@ -8,7 +8,7 @@ const App = () => {
   const features = [
     {
       category: ["all", "cat1", "cat2"],
-      title: "Bill management 1",
+      title: "Dev management 1",
       internalContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       image: "https://via.placeholder.com/300",
