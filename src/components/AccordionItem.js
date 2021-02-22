@@ -8,39 +8,29 @@ const Accordion = ({
   image,
   internalContent,
   icon,
-  handleFeatureClick
+  handleFeatureClick,
+  actdev
 }) => {
-  const [active, setActive] = useState("");
-  const [height, setHeight] = useState("0px");
-  const [rotation, setRotation] = useState("accordion__icon");
+  const [active, setActive] = useState(false);
 
   const content = useRef();
   const sensitive = useRef();
 
-  const toggleAccordion = () => {
-    setActive(active === "" ? "active" : "");
-    setHeight(active === "active" ? "0px" : `700px`);
-    setRotation(
-      active === "active" ? "accordion__icon" : "accordion__icon rotate"
-    );
-  };
-
   useOnClickOutside(sensitive, () => {
-    setActive("");
-    setHeight("0px");
-    setRotation("accordion__icon");
+    setActive(false);
   });
+
+  const handleClick = () => {
+    handleFeatureClick();
+    setActive(!active);
+  };
 
   return (
     <>
-      <div
-        className={`accordion ${active}`}
-        onClick={handleFeatureClick}
-        ref={sensitive}
-      >
+      <div className={`accordion `} onClick={handleClick} ref={sensitive}>
         <img
           alt=""
-          className="accordion_icon"
+          className={`accordion__icon ${active && `highlighted`}`}
           data-src={`https://quickbooks.intuit.com/oidam/intuit/sa/en_us/quickbooks/icons/${icon}.svg`}
           src={`https://quickbooks.intuit.com/oidam/intuit/sa/en_us/quickbooks/icons/${icon}.svg`}
         />

@@ -18,28 +18,28 @@ const App = () => {
       internalContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       image: "https://via.placeholder.com/300",
-      icon: "parking-icon-sbseg"
+      icon: "clock-fill-icon-sbseg"
     },
     {
       title: "Bill management Process",
       internalContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       image: "https://via.placeholder.com/300",
-      icon: "parking-icon-sbseg"
+      icon: "facebook-fill-icon-sbseg"
     },
     {
       title: "Bill management",
       internalContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       image: "https://via.placeholder.com/300",
-      icon: "gift-icon-sbseg"
+      icon: "automate-icon-sbseg"
     },
     {
       title: "Bill management",
       internalContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       image: "https://via.placeholder.com/300",
-      icon: "parking-icon-sbseg"
+      icon: "favorite-fill-icon-sbseg"
     },
     {
       title: "Bill management Process",

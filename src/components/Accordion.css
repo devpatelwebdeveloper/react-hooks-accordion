@@ -80,9 +80,14 @@
   margin: auto;
   display: flex;
   margin-bottom: 10px;
+  fill: red;
+}
+.accordion__icon:hover {
+  -webkit-filter: invert(0.45) sepia(1) saturate(5) hue-rotate(54deg);
+  filter: invert(0.45) sepia(1) saturate(5) hue-rotate(54deg);
 }
 
-.dev-accordion {
-  display: flex;
-  flex-direction: row;
+.highlighted {
+  -webkit-filter: invert(0.45) sepia(1) saturate(5) hue-rotate(54deg);
+  filter: invert(0.45) sepia(1) saturate(5) hue-rotate(54deg);
 }
