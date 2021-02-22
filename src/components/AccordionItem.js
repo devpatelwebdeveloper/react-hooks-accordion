@@ -1,18 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import useOnClickOutside from "../hooks/useOnClickOutside";
 
 import "./Accordion.css";
 
 const Accordion = (props) => {
   const [activated, setActivated] = useState(false);
+  const sensitive = useRef();
 
   const handleClick = () => {
     props.handleFeatureClick();
     setActivated(!activated);
   };
 
+  useOnClickOutside(sensitive, () => {
+    setActivated(false);
+  });
+
   return (
     <>
-      <div className={`accordion`} onClick={handleClick} ref={props.ref}>
+      <div className={`accordion`} onClick={handleClick} ref={sensitive}>
         <img
           alt=""
           className={`accordion__icon ${activated && `highlighted`}`}
