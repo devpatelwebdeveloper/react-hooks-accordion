@@ -1,29 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Accordion from "./AccordionItem";
 import FeatureGrid from "./FeatureGrid";
 
 import "./Accordion.css";
 
 const Accordions = ({ accordionContents }) => {
-  const [filter, setFilter] = useState("all");
-  const [projects, setProjects] = useState([]);
   const [activeFeature, setActiveFeature] = useState(null);
   const [featureRow, setFeatureRow] = useState(null);
   const [activeId, setActiveId] = useState(null);
-
-  useEffect(() => {
-    setProjects(accordionContents);
-  }, []);
-
-  useEffect(() => {
-    setProjects([]);
-
-    const filtered = accordionContents.map((p) => ({
-      ...p,
-      filtered: p.category.includes(filter)
-    }));
-    setProjects(filtered);
-  }, [filter]);
+  const [filter, setFilter] = useState("all");
+  const [filteredFeature, setFilteredFeature] = useState([]);
+  const sensitive = useRef();
 
   //Rounding
   const roundToX = (num, x) => {
@@ -34,7 +21,6 @@ const Accordions = ({ accordionContents }) => {
 
   const handleFeatureClick = (featureId, index) => {
     const itemRow = roundToX(index + 1, 4) / 4;
-
     if (featureId === activeFeature) {
       setActiveFeature(null);
       setFeatureRow(null);
@@ -45,7 +31,23 @@ const Accordions = ({ accordionContents }) => {
     }
   };
 
-  console.table(projects);
+  //useEffects
+  useEffect(() => {
+    setFilteredFeature(accordionContents);
+  }, []);
+
+  useEffect(() => {
+    setFilteredFeature([]);
+
+    const filtered = accordionContents.map((p) => ({
+      ...p,
+      filtered: p.category.includes(filter)
+    }));
+
+    const temp = [];
+    filtered.map((item) => item.filtered === true && temp.push(item));
+    setFilteredFeature(temp);
+  }, [filter]);
 
   return (
     <>
@@ -53,7 +55,6 @@ const Accordions = ({ accordionContents }) => {
         <a href="/#" active={filter === "all"} onClick={() => setFilter("all")}>
           All
         </a>
-        <br />
         <a
           href="/#"
           active={filter === "cat1"}
@@ -61,7 +62,6 @@ const Accordions = ({ accordionContents }) => {
         >
           cat1
         </a>
-        <br />
         <a
           href="/#"
           active={filter === "cat2"}
@@ -69,20 +69,16 @@ const Accordions = ({ accordionContents }) => {
         >
           cat2
         </a>
-        <br />
         <a
           href="/#"
-          active={filter === "category"}
-          onClick={() => setFilter("category")}
+          active={filter === "cat3"}
+          onClick={() => setFilter("cat3")}
         >
-          category
+          cat3
         </a>
-        <br />
-        <br />
-        <br />
-        <br />
       </div>
-      {projects.map((accordion, index) => {
+
+      {filteredFeature.map((accordion, index) => {
         return (
           <>
             <Accordion
@@ -96,7 +92,6 @@ const Accordions = ({ accordionContents }) => {
               handleFeatureClick={() => {
                 handleFeatureClick(accordion, index);
               }}
-              id={`feature-${accordion.title}`}
             />
 
             {(index % 4 === 3 || index === accordionContents.length - 1) &&

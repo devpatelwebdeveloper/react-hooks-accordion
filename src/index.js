@@ -5,7 +5,7 @@ import Accordions from "./components/Accordion";
 import "./styles.css";
 
 const App = () => {
-  const acc = [
+  const features = [
     {
       category: ["all", "cat1", "cat2"],
       title: "Bill management 1",
@@ -23,7 +23,7 @@ const App = () => {
       icon: "clock-fill-icon-sbseg"
     },
     {
-      category: ["all", "cat1", "cat2"],
+      category: ["all", "cat1", "cat3"],
       title: "Bill management Process",
       internalContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -39,7 +39,7 @@ const App = () => {
       icon: "automate-icon-sbseg"
     },
     {
-      category: ["all", "cat1", "cat2"],
+      category: ["all", "cat1", "cat3"],
       title: "Bill management 4",
       internalContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -63,7 +63,7 @@ const App = () => {
       icon: "gift-icon-sbseg"
     },
     {
-      category: ["all", "cat1", "category"],
+      category: ["all", "cat1", "cat3"],
       title: "Bill management 7",
       internalContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -79,7 +79,7 @@ const App = () => {
       icon: "parking-icon-sbseg"
     },
     {
-      category: ["all", "cat1", "category"],
+      category: ["all", "cat1", "cat3"],
       title: "Bill management 10",
       internalContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -95,7 +95,7 @@ const App = () => {
       icon: "parking-icon-sbseg"
     },
     {
-      category: ["all", "cat1", "category"],
+      category: ["all", "cat1", "cat3"],
       title: "Bill management Process 12",
       internalContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -103,9 +103,10 @@ const App = () => {
       icon: "parking-icon-sbseg"
     }
   ];
+
   return (
     <div className="App">
-      <Accordions accordionContents={acc} />
+      <Accordions accordionContents={features} />
     </div>
   );
 };
