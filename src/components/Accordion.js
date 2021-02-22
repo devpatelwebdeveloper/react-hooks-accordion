@@ -88,13 +88,13 @@ const Accordions = ({ accordionContents }) => {
               image={accordion.image}
               icon={accordion.icon}
               index={index}
-              length={accordionContents.length}
+              length={filteredFeature.length}
               handleFeatureClick={() => {
                 handleFeatureClick(accordion, index);
               }}
             />
 
-            {(index % 4 === 3 || index === accordionContents.length - 1) &&
+            {(index % 4 === 3 || index === filteredFeature.length - 1) &&
               roundToX(index + 1, 4) / 4 === featureRow && (
                 <div className="accordion__content">
                   <FeatureGrid

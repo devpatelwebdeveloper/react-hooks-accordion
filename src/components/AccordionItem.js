@@ -2,24 +2,24 @@ import React, { useState } from "react";
 
 import "./Accordion.css";
 
-const Accordion = ({ title, icon, handleFeatureClick }) => {
+const Accordion = (props) => {
   const [activated, setActivated] = useState(false);
 
   const handleClick = () => {
-    handleFeatureClick();
+    props.handleFeatureClick();
     setActivated(!activated);
   };
 
   return (
     <>
-      <div className={`accordion`} onClick={handleClick}>
+      <div className={`accordion`} onClick={handleClick} ref={props.ref}>
         <img
           alt=""
           className={`accordion__icon ${activated && `highlighted`}`}
-          data-src={`https://quickbooks.intuit.com/oidam/intuit/sa/en_us/quickbooks/icons/${icon}.svg`}
-          src={`https://quickbooks.intuit.com/oidam/intuit/sa/en_us/quickbooks/icons/${icon}.svg`}
+          data-src={`https://quickbooks.intuit.com/oidam/intuit/sa/en_us/quickbooks/icons/${props.icon}.svg`}
+          src={`https://quickbooks.intuit.com/oidam/intuit/sa/en_us/quickbooks/icons/${props.icon}.svg`}
         />
-        <div className="accordion__title">{title}</div>
+        <div className="accordion__title">{props.title}</div>
       </div>
     </>
   );
